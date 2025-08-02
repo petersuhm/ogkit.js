@@ -1,0 +1,16 @@
+{
+  "name": "ogkit",
+  "version": "1.0.0",
+  "description": "Dynamic OG images with HTML and CSS",
+  "main": "ogkit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "author": "Peter Suhm",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
