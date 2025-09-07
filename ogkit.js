@@ -14,8 +14,8 @@ const render = () => {
 
   const html = template.innerHTML;
 
-  const width = 1280;
-  const height = 720;
+  const width = 1200;
+  const height = 630;
 
   document.body.innerHTML = `<div style="height: ${height}px; width: ${width}px;">${html}</div>`;
 
