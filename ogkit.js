@@ -1,4 +1,4 @@
-const render = () => {
+const render = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const shouldRender = urlParams.has("ogkit-render");
 
@@ -21,6 +21,14 @@ const render = () => {
 
   document.body.removeAttribute("class");
   document.body.removeAttribute("style");
+
+  await new Promise(r => requestAnimationFrame(r));
+
+  const timeout = (ms) => new Promise(r => setTimeout(r, ms));
+  await Promise.race([
+    (document.fonts && document.fonts.ready) || Promise.resolve(),
+    timeout(1200)
+  ]);
 
   window.__OG_READY__ = true;
 };
