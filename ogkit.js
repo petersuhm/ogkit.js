@@ -24,6 +24,17 @@ const render = async () => {
 
   await new Promise(r => requestAnimationFrame(r));
 
+  // Wait for images to load
+  const images = document.querySelectorAll('img');
+  await Promise.all(Array.from(images).map(img => {
+    if (img.complete) return Promise.resolve();
+    return new Promise(resolve => {
+      img.addEventListener('load', resolve, { once: true });
+      img.addEventListener('error', resolve, { once: true });
+    });
+  }));
+
+  // Wait for fonts to load
   const timeout = (ms) => new Promise(r => setTimeout(r, ms));
   await Promise.race([
     (document.fonts && document.fonts.ready) || Promise.resolve(),
